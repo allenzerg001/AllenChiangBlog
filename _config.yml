@@ -3,7 +3,7 @@ tagline:      'Allen Chiang Blog'
 description:  'Allen Chiang Blog'
 url:          http://allenzerg001.github.io/AllenChiangBlog
 version:      1.0.0
-author:		  Allen Chiang
+author:		  'Allen Chiang'
   name:       ''
   email:      'allenzerg001@gmail.com'
 markdown:     rdiscount
