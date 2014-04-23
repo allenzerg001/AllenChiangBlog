@@ -1,11 +1,16 @@
-# In a non-ARC environment this Rules to remember
+---
+layout: post
+title: ARC & Non-ARC
+---
+
+### In a non-ARC environment this Rules to remember
 
 * You have ownership of any objects you create.
 * You can take ownership of an object using retain.
 * When no longer needed, you must relinquish ownership of an object you own.
 * You must not relinquish ownership of an object you don’t own.
 
-# Take ownership of a object in this methods which name likes
+### Take ownership of a object in this methods which name likes
 
 * alloc
 * new
@@ -13,7 +18,7 @@
 * mutableCopy
 * and “retain” also take the ownship
 
-# In ARC , follow below rules
+### In ARC , follow below rules
 
 * Forget about using retain, release, retainCount, and autorelease.
 * Forget about using NSAllocateObject and NSDeallocateObject.
@@ -24,7 +29,7 @@
 * Object type variables can’t be members of struct or union in C language.(__bridge __bridge_retain __bridge_transfer)
 * ‘id’ and ‘void*’ have to be cast explicitly.
 
-# the property qualifier means
+### the property qualifier means
 
 <table>
     <tr>
