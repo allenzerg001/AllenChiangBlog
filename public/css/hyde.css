@@ -256,6 +256,10 @@ a:focus {
 .colophon-links li {
   color: inherit;
 }
+.colophon-links .component{
+  width: 32px;
+  height: 32px;
+}
 
 /* Responsive masthead */
 @media (min-width: 768px) {
