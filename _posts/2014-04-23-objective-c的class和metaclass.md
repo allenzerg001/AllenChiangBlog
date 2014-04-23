@@ -53,4 +53,6 @@ metaclass跟class的区别在于metaclass存储类static开头的方法和static
 6. methodLists：如果上面info说明当前是class，这里存储实例方法，如果是metaclass，这里存储类额静态方法
 7. cache：指向objc_cache的指针，用于对方法的缓存
 8. protocols：指向objc_protocol_list的指针，存储该类要遵守的协议
-9. 
+
+
+内容参考自：http://www.cnblogs.com/kesalin/archive/2012/01/19/objc_class_object.html
