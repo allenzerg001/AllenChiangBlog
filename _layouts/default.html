@@ -7,16 +7,19 @@
 
     <header class="masthead">
       <div class="masthead-inner">
-        <h1>{{ site.title }}</h1>
+        <a href="{{site.url}}"><h1>{{ site.title }}</h1></a>
         <p class="lead">{{ site.description }}</p>
 
         <div class="colophon">
           <ul class="colophon-links">
             <li>
-              Email:allenzerg001@gmail.com
+              <a href="mailto:allenzerg001@gmail.com"><img src="{{site.url}}/public/images/google.png"/></a>
             </li>
             <li>
-              http://twitter.com/allen_chiang_
+              <a href="http://twitter.com/allen_chiang_"><img src="{{site.url}}/public/images/twitter.png"/></a>
+            </li>
+            <li>
+              <a href="{{site.url}}/atom.xml"><img src="{{site.url}}/public/images/twitter.png"/></a>
             </li>
           </ul>
           <p>&copy; 2014. {{ site.author.name }} All rights reserved.</p>
