@@ -259,6 +259,7 @@ a:focus {
 .colophon-links .component{
   width: 32px;
   height: 32px;
+  display: inline;
 }
 
 /* Responsive masthead */
