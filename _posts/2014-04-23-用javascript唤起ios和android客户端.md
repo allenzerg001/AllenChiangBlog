@@ -36,4 +36,16 @@ title: 用javascript唤起iOS和Android客户端
 			},outTime);
 		})();
 
-	
+	### Android Update
+最近发现部分android手机不能正常唤起客户端，主要原因google有解释：[https://developer.chrome.com/multidevice/android/intents](https://developer.chrome.com/multidevice/android/intents)
+
+也就是说现在Android的chrome下（25及以后的版本），上面的隐藏iframe方式不能正常生效了，唤起客户端需要这么写：
+
+	window.location = ‘intent://item/#Intent;scheme=taobao;package=com.taobao;end’;
+
+如果还需要带一些参数的话，可以写在item后面
+
+	window.location = ‘intent://item?id=12345678/#Intent;scheme=taobao;package=com.taobao;end’;
+
+另外如果还有唤起客户端的需要，建议看看这个repo：[https://github.com/miaojing/redirectToNative](https://github.com/miaojing/redirectToNative)
+以及他的demo：[http://gallery.kissyui.com/redirectToNative/1.2/demo/index.html](http://gallery.kissyui.com/redirectToNative/1.2/demo/index.html)
