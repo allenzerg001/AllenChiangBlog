@@ -1,4 +1,7 @@
-# StringWithFormat和sprintf的性能对比
+---
+layout: post
+title: stringWithFormat和sprintf方法性能比较
+---
 
 TableView滚动有点卡的时候，在保证Core Animation帧数是60的情况下，有时还要再看一下Time Profile。比如哪个是当前比较耗时的方法，分析以下原因以及解决方法。
 
