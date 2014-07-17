@@ -51,7 +51,7 @@ Detail页面的滚动是用户评论，还好内容不多；用排除法最终�
 
 ### 性能对比
 
-用两种方法先后进行一次总计1million的字符串拼装，分别看看两者的耗时情况
+用[NSString stringWithFormat:]和sprint()两种方法先后进行一次总计1million的字符串拼装，分别看看两者的耗时情况
 	long calCount = 1000000;
 
 #### stringWithFormat
