@@ -87,4 +87,6 @@ Detail页面的滚动是用户评论，还好内容不多；用排除法最终�
 
 但从对比结果上来看sprintf的效率应该是stringWithFormat的20倍以上，看来以后对于大量的字符串拼装最好还是用sprintf方法。
 
+以上测试代码可以在[https://github.com/allenzerg001/TestHelloWorld](https://github.com/allenzerg001/TestHelloWorld)下载
+
 至于为什么是这样，因为还没有找到stringWithFormat方法的真正源码，还为从得知，有知晓的还望指教。
