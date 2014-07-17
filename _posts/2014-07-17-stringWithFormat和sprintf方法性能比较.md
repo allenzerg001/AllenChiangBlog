@@ -1,21 +1,22 @@
 ---
 layout: post
-title: stringWithFormat和sprintf方法性能比较
+##### title: StringWithFormat和sprintf方法性能比较
 ---
 
-TableView滚动有点卡的时候，在保证Core Animation帧数是60的情况下，有时还要再看一下Time Profile。比如哪个是当前比较耗时的方法，分析以下原因以及解决方法。
+TableView滚动有点卡的时候，在保证Core Animation帧数是60的情况下，有时还要再看一下Time Profile。比如哪个是当前比较耗时的方法，分析一下原因以及解决方法。
 
-昨天解决Detail页面评论卡的时候，Core Animation的帧数始终在59-60之间，貌似看不出什么问题。
+
+昨天解决Detail页面滚动评论卡的时候，Core Animation的帧数始终在59-60之间，貌似看不出什么问题。
 ![](/AllenChiangBlog/public/upload/2014-07-17-coreanimation.png)
 
-再看一下Time Profile貌似发现有一个比较常见的方法耗时有点多
+
+再看一下Time Profile貌似发现有一个比较常见的[NSString stringWithFormat:]方法居然占到了13.7%的执行时间感觉有点不靠谱。
 ![](/AllenChiangBlog/public/upload/2014-07-17-timeprofile.png)
 
-[NSString stringWithFormat:]方法居然占到了13.7%的执行时间感觉有点不靠谱。
 
 ### 定位原因
 
-Detail页面的滚动是用户评论，还好内容不多；用一些排除法最终定位在评论内容做表情替换这里，代码如下：
+Detail页面的滚动是用户评论，还好内容不多；用排除法最终定位在评论内容做表情替换这里，代码如下：
 ![](/AllenChiangBlog/public/upload/2014-07-17-replaceemoj.png)
 
 解释一下，因为表情有100多个，而且服务端返回的是类似/:026、/:-W之类的伪符号，所以循环把这些伪符号替换成一段类似html的代码，并且每次循环都用到[NSString stringWithFormat:]方法构建了这段类似html的代码。
@@ -46,9 +47,11 @@ Detail页面的滚动是用户评论，还好内容不多；用一些排除法�
     		[super setText:s];
 	}
 
-改成上面这样以后肉眼看滚动tableview似乎没那么卡了，再看一下TimeProfile终于也没有占用特别长时间的方法了。
+现在我们Detail页面是上述两种方法一起应用，改成这样以后肉眼看滚动TableView似乎没那么卡了，再看一下TimeProfile终于也没有占用特别长时间的方法了。
 
 ### 性能对比
+
+用两种方法先后进行一次总计1million的字符串拼装，分别看看两者的耗时情况
 	long calCount = 1000000;
 
 #### stringWithFormat
@@ -76,9 +79,12 @@ Detail页面的滚动是用户评论，还好内容不多；用一些排除法�
         return (CGFloat)nanos / NSEC_PER_SEC;
 
 #### 对比结果
-在iPhone 5真机上面执行上述程序
-stringWithFormat 执行这1million的时间是7.025311秒；
-sprintf执行同样这1million的时间是0.326543秒；
+在iPhone 5真机上面执行上述程序的结果：
+
+- stringWithFormat 执行这1million的时间是7.025311秒
+
+- sprintf执行同样这1million的时间是0.326543秒
+
 但从对比结果上来看sprintf的效率应该是stringWithFormat的20倍以上，看来以后对于大量的字符串拼装最好还是用sprintf方法。
 
 至于为什么是这样，因为还没有找到stringWithFormat方法的真正源码，还为从得知，有知晓的还望指教。
