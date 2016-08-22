@@ -37,7 +37,7 @@ metaclass跟class的区别在于metaclass存储类static开头的方法和static
 
 #### 这里应用一张别人的图来说明class、metaclass、superclass几者之间的关系就一目了然
 
-![metaclass](/AllenChiangBlog/public/upload/2014-04-23-01.gif)
+![metaclass](/public/upload/2014-04-23-01.gif)
 
 1. 类的实例对象的isa指向类，类的isa指向类的metaclass，类的metaclass指向基类的metaclass
 2. 类的superclass指向父类，类的metaclass的superclass指向该类的superclassmetaclass

@@ -7,17 +7,17 @@ TableView滚动有点卡的时候，在保证Core Animation帧数是60的情况�
 
 
 昨天解决Detail页面滚动评论卡的时候，Core Animation的帧数始终在59-60之间，貌似看不出什么问题。
-![](/AllenChiangBlog/public/upload/2014-07-17-coreanimation.png)
+![](/public/upload/2014-07-17-coreanimation.png)
 
 
 再看一下Time Profile貌似发现有一个比较常见的[NSString stringWithFormat:]方法居然占到了13.7%的执行时间感觉有点不靠谱。
-![](/AllenChiangBlog/public/upload/2014-07-17-timeprofile.png)
+![](/public/upload/2014-07-17-timeprofile.png)
 
 
 ### 定位原因
 
 Detail页面的滚动是用户评论，还好内容不多；用排除法最终定位在评论内容做表情替换这里，代码如下：
-![](/AllenChiangBlog/public/upload/2014-07-17-replaceemoj.png)
+![](/public/upload/2014-07-17-replaceemoj.png)
 
 解释一下，因为表情有100多个，而且服务端返回的是类似/:026、/:-W之类的伪符号，所以循环把这些伪符号替换成一段类似html的代码，并且每次循环都用到[NSString stringWithFormat:]方法构建了这段类似html的代码。
 

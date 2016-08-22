@@ -1,4 +1,4 @@
-# [Allen Chiang's Blog](http://allenzerg001.github.io/AllenChiangBlog/)
+# [Allen Chiang's Blog](http://www.allenchiang.com/)
 
 
 
